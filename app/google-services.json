@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "908333624223",
+    "project_id": "stow-70ed8",
+    "storage_bucket": "stow-70ed8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908333624223:android:a481acd267b4c5761dabaa",
+        "android_client_info": {
+          "package_name": "com.example.stow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "908333624223-dpqtkopeibq3go771u1e9fnv9u44g0vb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHMu1yZcHFB3dzYVF8VoMxxp5-ymWM-4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "908333624223-dpqtkopeibq3go771u1e9fnv9u44g0vb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
