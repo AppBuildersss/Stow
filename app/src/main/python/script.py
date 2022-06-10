@@ -8,7 +8,7 @@ def get_stats():
     kw_list = ["Ted Lasso Season 2", "nike travis scott", "monkeypox", "ukraine"]
     keywords = []
 
-    s = "ranking" + "\n"
+    s = "Trend %" + "\n"
 
     def check():
         pytrends.build_payload(kw_list, cat=0, timeframe='now 7-d', geo='', gprop='')
@@ -21,9 +21,9 @@ def get_stats():
 
     for kw in kw_list:
         keywords.append(kw)
-        s = s + check()
+        s = s + kw + " " + check()
         keywords.pop()
 
     return s
 
-print(run())
+# print(run())

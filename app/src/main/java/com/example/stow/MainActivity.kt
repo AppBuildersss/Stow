@@ -1,13 +1,12 @@
 package com.example.stow
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.stow.databinding.ActivityMainBinding
 
-import com.chaquo.python.PyException;
-import com.chaquo.python.PyObject;
-import com.chaquo.python.Python;
-import com.chaquo.python.android.AndroidPlatform;
+import com.chaquo.python.Python
+import com.chaquo.python.android.AndroidPlatform
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +21,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initPython()
-        binding.pythonTextview.text = getPythonScript()
+        binding.TextViewTrends.text = getPythonScript()
+
+        binding.button.setOnClickListener {
+            val intent = Intent(this, AddKeywordsActivity::class.java)
+            startActivity(intent)
+        }
+
+
     }
 
     private fun initPython() {
