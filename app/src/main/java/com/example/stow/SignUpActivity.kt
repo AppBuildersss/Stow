@@ -46,13 +46,15 @@ class SignUpActivity : AppCompatActivity() {
 
                         // Add a new document with a generated ID
                         db.collection("users")
-                            .add(user)
-                            .addOnSuccessListener { documentReference ->
-                                Log.d(TAG,"DocumentSnapshot added with ID: ${documentReference.id}")
-                            }
-                            .addOnFailureListener { e ->
-                                Log.w(TAG, "Error adding document", e)
-                            }
+                            .document(firebaseAuth.uid.toString())
+                            .set(user)
+                            //.add(user)
+                            //.addOnSuccessListener { documentReference ->
+                            //    Log.d(TAG,"DocumentSnapshot added with ID: ${documentReference.id}")
+                           // }
+                           // .addOnFailureListener { e ->
+                            //    Log.w(TAG, "Error adding document", e)
+                            //}
 
 
                         val intent = Intent(this, SignInActivity::class.java)
