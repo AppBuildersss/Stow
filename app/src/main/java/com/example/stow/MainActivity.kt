@@ -7,11 +7,13 @@ import com.example.stow.databinding.ActivityMainBinding
 
 import com.chaquo.python.Python
 import com.chaquo.python.android.AndroidPlatform
+import com.google.firebase.auth.FirebaseAuth
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

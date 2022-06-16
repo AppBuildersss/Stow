@@ -12,14 +12,6 @@
         <activity
             android:name=".AddKeywordsActivity"
             android:exported="true">
-        </activity>
-        <activity
-            android:name=".SignUpActivity"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".SignInActivity"
-            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,9 +19,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".SignUpActivity"
             android:exported="true">
 
+        </activity>
+        <activity
+            android:name=".SignInActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
         </activity>
     </application>
 
