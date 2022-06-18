@@ -22,7 +22,7 @@ class AddKeywordsActivity : AppCompatActivity()  {
             // User is signed in
         } else {
             // No user is signed in
-            val intent = Intent(this, SignInActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
         super.onCreate(savedInstanceState)

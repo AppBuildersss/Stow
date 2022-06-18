@@ -32,7 +32,7 @@ class SignUpActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        binding.login.setOnClickListener {
+        binding.loginButton.setOnClickListener {
             val email = binding.username.text.toString()
             val pass = binding.password.text.toString()
 
@@ -65,7 +65,7 @@ class SignUpActivity : AppCompatActivity() {
                             //}
 
 
-                        val intent = Intent(this, SignInActivity::class.java)
+                        val intent = Intent(this, LoginActivity::class.java)
                         startActivity(intent)
                         } else {
                             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
