@@ -20,8 +20,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            // User is signed in
+        } else {
+            // No user is signed in
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
+        }
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_main)
+
+        firebaseAuth = FirebaseAuth.getInstance()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

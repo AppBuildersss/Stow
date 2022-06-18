@@ -17,6 +17,14 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            // User is signed in
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        } else {
+            // No user is signed in
+        }
         super.onCreate(savedInstanceState)
 
         binding = ActivitySignUpBinding.inflate(layoutInflater)

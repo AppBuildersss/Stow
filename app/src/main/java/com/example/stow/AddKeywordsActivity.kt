@@ -17,19 +17,17 @@ class AddKeywordsActivity : AppCompatActivity()  {
     private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityAddKeywordsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        var temp = ""
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
             // User is signed in
-            temp += user.email.toString()
         } else {
             // No user is signed in
-            temp += "nullllll"
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
         }
+        super.onCreate(savedInstanceState)
+        binding = ActivityAddKeywordsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
         val db = Firebase.firestore
