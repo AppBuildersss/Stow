@@ -64,6 +64,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.SignOutButton.setOnClickListener {
+            FirebaseAuth.getInstance().signOut();
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
+        }
+
 
     }
 
