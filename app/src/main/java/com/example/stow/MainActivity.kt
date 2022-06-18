@@ -40,6 +40,8 @@ class MainActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         //initPython()
+        initPython()
+
 
         val docRef = db.collection("users")
         docRef.document(firebaseAuth.uid.toString()).get().addOnCompleteListener { task ->
@@ -54,7 +56,6 @@ class MainActivity : AppCompatActivity() {
                     //Log.d(TAG,"$email/$pass/$user")
                     //Log.d(ContentValues.TAG,"$word_01")
                     //binding.EditText1.setText(first)
-                    initPython()
                     binding.TextViewTrends.text = getPythonScript(word_01, word_02, word_03, word_04, word_05)
 
                 } else {
@@ -78,6 +79,32 @@ class MainActivity : AppCompatActivity() {
             FirebaseAuth.getInstance().signOut();
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.RefreshButton.setOnClickListener {
+            docRef.document(firebaseAuth.uid.toString()).get().addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val document = task.result
+                    if (document.exists()) {
+                        val word_01 = document.getString("first").toString()
+                        val word_02 = document.getString("second").toString()
+                        val word_03 = document.getString("third").toString()
+                        val word_04 = document.getString("fourth").toString()
+                        val word_05 = document.getString("fifth").toString()
+                        //Log.d(TAG,"$email/$pass/$user")
+                        //Log.d(ContentValues.TAG,"$word_01")
+                        //binding.EditText1.setText(first)
+                        binding.TextViewTrends.text = getPythonScript(word_01, word_02, word_03, word_04, word_05)
+
+                    } else {
+                        Log.d(ContentValues.TAG, "The document doesn't exist.")
+                    }
+                } else {
+                    task.exception?.message?.let {
+                        Log.d(ContentValues.TAG, it)
+                    }
+                }
+            }
         }
 
 
