@@ -16,7 +16,7 @@ class LoginActivity : AppCompatActivity() {
         // Entry point to access Firebase Database
         firebaseAuth = FirebaseAuth.getInstance()
 
-        // Bypass login page if user is still signed in
+        // Bypass login page if user is already logged in
         val user = firebaseAuth.currentUser
         if (user != null) {
             val intent = Intent(this, MainActivity::class.java)
