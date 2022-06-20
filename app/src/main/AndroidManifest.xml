@@ -27,10 +27,6 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".SignInActivity"
-            android:exported="true">
-        </activity>
-        <activity
             android:name=".MainActivity"
             android:exported="true">
         </activity>

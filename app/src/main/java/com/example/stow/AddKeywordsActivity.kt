@@ -5,7 +5,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.EditText
 import com.example.stow.databinding.ActivityAddKeywordsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -17,44 +16,41 @@ class AddKeywordsActivity : AppCompatActivity()  {
     private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val user = FirebaseAuth.getInstance().currentUser
-        if (user != null) {
-            // User is signed in
-        } else {
-            // No user is signed in
+        // Entry point to access Firebase Database
+        firebaseAuth = FirebaseAuth.getInstance()
+
+        // Go back to login page if user has logged out
+        val user = firebaseAuth.currentUser
+        if (user == null) {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+
+        // Setup
         super.onCreate(savedInstanceState)
         binding = ActivityAddKeywordsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        displayWords()
 
-        val db = Firebase.firestore
-        firebaseAuth = FirebaseAuth.getInstance()
+        binding.buttonConfirm.setOnClickListener {
+            storeWords()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+    }
 
-
-        val docRef = db.collection("users")
+    private fun displayWords() {
+        val docRef = Firebase.firestore.collection("users")
         docRef.document(firebaseAuth.uid.toString()).get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val document = task.result
                 if (document.exists()) {
-                   // val first = document.getString("first")
-                    val word_01 = document.getString("first").toString()
-                    val word_02 = document.getString("second").toString()
-                    val word_03 = document.getString("third").toString()
-                    val word_04 = document.getString("fourth").toString()
-                    val word_05 = document.getString("fifth").toString()
-                    //Log.d(TAG,"$email/$pass/$user")
-                    //Log.d(TAG,"$first")
-                    //binding.EditText1.setText(first)
-                    binding.EditText1.setText(word_01)
-                    binding.EditText2.setText(word_02)
-                    binding.EditText3.setText(word_03)
-                    binding.EditText4.setText(word_04)
-                    binding.EditText5.setText(word_05)
-
-
+                    binding.editText1.setText(document.getString("first").toString())
+                    binding.editText2.setText(document.getString("second").toString())
+                    binding.editText3.setText(document.getString("third").toString())
+                    binding.editText4.setText(document.getString("fourth").toString())
+                    binding.editText5.setText(document.getString("fifth").toString())
                 } else {
                     Log.d(TAG, "The document doesn't exist.")
                 }
@@ -64,27 +60,16 @@ class AddKeywordsActivity : AppCompatActivity()  {
                 }
             }
         }
-
-
-        binding.buttonConfirm.setOnClickListener {
-
-
-            // Add a new document with a generated ID
-            db.collection("users").document(firebaseAuth.uid.toString())
-                .update("first", binding.EditText1.text.toString(),
-                    "second", binding.EditText2.text.toString(),
-                    "third", binding.EditText3.text.toString(),
-                    "fourth", binding.EditText4.text.toString(),
-                    "fifth", binding.EditText5.text.toString())
-
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-
     }
 
-
-
+    private fun storeWords() {
+        Firebase.firestore.collection("users").document(firebaseAuth.uid.toString())
+            .update("first", binding.editText1.text.toString(),
+                "second", binding.editText2.text.toString(),
+                "third", binding.editText3.text.toString(),
+                "fourth", binding.editText4.text.toString(),
+                "fifth", binding.editText5.text.toString())
+    }
 
 }
 

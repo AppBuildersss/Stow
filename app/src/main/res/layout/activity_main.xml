@@ -7,10 +7,10 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/editButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_keyword"
+        android:text="@string/edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.941" />
 
     <TextView
-        android:id="@+id/TextView_Trends"
+        android:id="@+id/tempTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,7 +30,7 @@
         app:layout_constraintVertical_bias="0.407" />
 
     <Button
-        android:id="@+id/SignOutButton"
+        android:id="@+id/signOutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Out"
@@ -42,7 +42,7 @@
         app:layout_constraintVertical_bias="0.941" />
 
     <Button
-        android:id="@+id/RefreshButton"
+        android:id="@+id/refreshButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Refresh"

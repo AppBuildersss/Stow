@@ -6,13 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.stow.databinding.ActivityMainBinding
-
 import com.chaquo.python.Python
 import com.chaquo.python.android.AndroidPlatform
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,28 +18,25 @@ class MainActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val user = FirebaseAuth.getInstance().currentUser
-        if (user != null) {
-            // User is signed in
-        } else {
-            // No user is signed in
+        // Entry point to access Firebase Database
+        firebaseAuth = FirebaseAuth.getInstance()
+
+        // Go back to login page if user has logged out
+        val user = firebaseAuth.currentUser
+        if (user == null) {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+
+        // Setup
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
-
-        firebaseAuth = FirebaseAuth.getInstance()
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val db = Firebase.firestore
-        firebaseAuth = FirebaseAuth.getInstance()
-
-        //initPython()
+        // Initialise python support
         initPython()
 
+        val db = Firebase.firestore
 
         val docRef = db.collection("users")
         docRef.document(firebaseAuth.uid.toString()).get().addOnCompleteListener { task ->
@@ -56,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                     //Log.d(TAG,"$email/$pass/$user")
                     //Log.d(ContentValues.TAG,"$word_01")
                     //binding.EditText1.setText(first)
-                    binding.TextViewTrends.text = getPythonScript(word_01, word_02, word_03, word_04, word_05)
+                    binding.tempTextView.text = getPythonScript(word_01, word_02, word_03, word_04, word_05)
 
                 } else {
                     Log.d(ContentValues.TAG, "The document doesn't exist.")
@@ -68,20 +63,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        //binding.TextViewTrends.text = getPythonScript()
-
-        binding.button.setOnClickListener {
+        binding.editButton.setOnClickListener {
             val intent = Intent(this, AddKeywordsActivity::class.java)
             startActivity(intent)
         }
 
-        binding.SignOutButton.setOnClickListener {
+        binding.signOutButton.setOnClickListener {
             FirebaseAuth.getInstance().signOut();
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
-        binding.RefreshButton.setOnClickListener {
+        binding.refreshButton.setOnClickListener {
             docRef.document(firebaseAuth.uid.toString()).get().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val document = task.result
@@ -94,7 +87,7 @@ class MainActivity : AppCompatActivity() {
                         //Log.d(TAG,"$email/$pass/$user")
                         //Log.d(ContentValues.TAG,"$word_01")
                         //binding.EditText1.setText(first)
-                        binding.TextViewTrends.text = getPythonScript(word_01, word_02, word_03, word_04, word_05)
+                        binding.tempTextView.text = getPythonScript(word_01, word_02, word_03, word_04, word_05)
 
                     } else {
                         Log.d(ContentValues.TAG, "The document doesn't exist.")
@@ -106,8 +99,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
-
     }
 
     private fun initPython() {
@@ -116,19 +107,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getPythonScript(word_01: String, word_02: String,
-    word_03: String, word_04: String, word_05: String): String {
+    private fun getPythonScript(word_01: String, word_02: String, word_03: String,
+                                word_04: String, word_05: String): String {
         val python = Python.getInstance()
         val pythonFile = python.getModule("script")
-        return pythonFile.callAttr("get_stats", word_01, word_02, word_03, word_04, word_05).toString()
-        //return pythonFile.callAttr("get_stats", "word_01", "word_02", "word_03", "word_04", "word_05").toString()
+        return pythonFile.callAttr("get_stats", word_01, word_02, word_03,
+            word_04, word_05).toString()
     }
-
-    private fun getPythonScriptTest(word_01: String, word_02: String,
-                                    word_03: String, word_04: String, word_05: String): String {
-        val python = Python.getInstance()
-        val pythonFile = python.getModule("script")
-        return pythonFile.callAttr("test", word_01, word_02, word_03, word_04, word_05).toString()
-    }
-
 }

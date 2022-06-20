@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/EditText_1"
+        android:id="@+id/editText_1"
         android:layout_width="362dp"
         android:layout_height="55dp"
         android:ems="10"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.05" />
 
     <EditText
-        android:id="@+id/EditText_2"
+        android:id="@+id/editText_2"
         android:layout_width="362dp"
         android:layout_height="55dp"
         android:ems="10"
@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.15" />
 
     <EditText
-        android:id="@+id/EditText_3"
+        android:id="@+id/editText_3"
         android:layout_width="362dp"
         android:layout_height="55dp"
         android:ems="10"
@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.25" />
 
     <EditText
-        android:id="@+id/EditText_4"
+        android:id="@+id/editText_4"
         android:layout_width="362dp"
         android:layout_height="55dp"
         android:ems="10"
@@ -59,7 +59,7 @@
         app:layout_constraintVertical_bias="0.35" />
 
     <EditText
-        android:id="@+id/EditText_5"
+        android:id="@+id/editText_5"
         android:layout_width="362dp"
         android:layout_height="55dp"
         android:ems="10"

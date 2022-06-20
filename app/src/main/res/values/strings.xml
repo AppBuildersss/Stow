@@ -11,4 +11,5 @@
     <string name="login_failed">"Login failed"</string>
     <string name="add_keyword">"add"</string>
     <string name="confirm">Confirm</string>
+    <string name="edit">Edit</string>
 </resources>
