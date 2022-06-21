@@ -36,32 +36,8 @@ class MainActivity : AppCompatActivity() {
         // Initialise python support
         initPython()
 
-        val db = Firebase.firestore
-
-        val docRef = db.collection("users")
-        docRef.document(firebaseAuth.uid.toString()).get().addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                val document = task.result
-                if (document.exists()) {
-                    val word_01 = document.getString("first").toString()
-                    val word_02 = document.getString("second").toString()
-                    val word_03 = document.getString("third").toString()
-                    val word_04 = document.getString("fourth").toString()
-                    val word_05 = document.getString("fifth").toString()
-                    //Log.d(TAG,"$email/$pass/$user")
-                    //Log.d(ContentValues.TAG,"$word_01")
-                    //binding.EditText1.setText(first)
-                    binding.tempTextView.text = getPythonScript(word_01, word_02, word_03, word_04, word_05)
-
-                } else {
-                    Log.d(ContentValues.TAG, "The document doesn't exist.")
-                }
-            } else {
-                task.exception?.message?.let {
-                    Log.d(ContentValues.TAG, it)
-                }
-            }
-        }
+        // Hash map of keywords
+        val baton = getPythonScriptResult()
 
         binding.editButton.setOnClickListener {
             val intent = Intent(this, AddKeywordsActivity::class.java)
@@ -69,35 +45,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.signOutButton.setOnClickListener {
-            FirebaseAuth.getInstance().signOut();
+            FirebaseAuth.getInstance().signOut()
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
         binding.refreshButton.setOnClickListener {
-            docRef.document(firebaseAuth.uid.toString()).get().addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val document = task.result
-                    if (document.exists()) {
-                        val word_01 = document.getString("first").toString()
-                        val word_02 = document.getString("second").toString()
-                        val word_03 = document.getString("third").toString()
-                        val word_04 = document.getString("fourth").toString()
-                        val word_05 = document.getString("fifth").toString()
-                        //Log.d(TAG,"$email/$pass/$user")
-                        //Log.d(ContentValues.TAG,"$word_01")
-                        //binding.EditText1.setText(first)
-                        binding.tempTextView.text = getPythonScript(word_01, word_02, word_03, word_04, word_05)
-
-                    } else {
-                        Log.d(ContentValues.TAG, "The document doesn't exist.")
-                    }
-                } else {
-                    task.exception?.message?.let {
-                        Log.d(ContentValues.TAG, it)
-                    }
-                }
-            }
+            runPythonScript(baton)
         }
     }
 
@@ -107,11 +61,35 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getPythonScript(word_01: String, word_02: String, word_03: String,
-                                word_04: String, word_05: String): String {
+    private fun runPythonScript(baton: HashMap<String, String>): String {
         val python = Python.getInstance()
         val pythonFile = python.getModule("script")
-        return pythonFile.callAttr("get_stats", word_01, word_02, word_03,
-            word_04, word_05).toString()
+        return pythonFile.callAttr("getResult", baton["first"], baton["second"],
+            baton["third"], baton["fourth"], baton["fifth"]).toString()
+    }
+
+    private fun getPythonScriptResult(): HashMap<String, String> {
+        val baton = hashMapOf<String, String>()
+        val docRef = Firebase.firestore.collection("users")
+        docRef.document(firebaseAuth.uid.toString()).get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val document = task.result
+                if (document.exists()) {
+                    baton["first"] = (document.getString("first").toString())
+                    baton["second"] = (document.getString("second").toString())
+                    baton["third"] = (document.getString("third").toString())
+                    baton["fourth"] = (document.getString("fourth").toString())
+                    baton["fifth"] = (document.getString("fifth").toString())
+                    binding.tempTextView.text = runPythonScript(baton)
+                } else {
+                    Log.d(ContentValues.TAG, "The document doesn't exist.")
+                }
+            } else {
+                task.exception?.message?.let {
+                    Log.d(ContentValues.TAG, it)
+                }
+            }
+        }
+        return baton
     }
 }
