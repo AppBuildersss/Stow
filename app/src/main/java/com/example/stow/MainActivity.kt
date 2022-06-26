@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.example.stow.databinding.ActivityMainBinding
 import com.chaquo.python.Python
 import com.chaquo.python.android.AndroidPlatform
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         initPython()
 
         // Hash map of keywords
-        val baton = getPythonScriptResult()
+        var baton = getPythonScriptResult()
 
         binding.editButton.setOnClickListener {
             val intent = Intent(this, AddKeywordsActivity::class.java)
@@ -51,7 +52,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.refreshButton.setOnClickListener {
-            runPythonScript(baton)
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -80,7 +82,30 @@ class MainActivity : AppCompatActivity() {
                     baton["third"] = (document.getString("third").toString())
                     baton["fourth"] = (document.getString("fourth").toString())
                     baton["fifth"] = (document.getString("fifth").toString())
-                    binding.tempTextView.text = runPythonScript(baton)
+
+                    var numbers = runPythonScript(baton)
+
+                    //binding.tempTextView.text = numbers
+                    binding.progressBar2.visibility = View.INVISIBLE
+
+                    binding.word01.text = baton["first"]
+                    binding.word01Trend.text = numbers.substringBefore("\n")
+
+                    binding.word02.text = baton["second"]
+                    numbers = numbers.substringAfter("\n")
+                    binding.word02Trend.text = numbers.substringBefore("\n")
+
+                    binding.word03.text = baton["third"]
+                    numbers = numbers.substringAfter("\n")
+                    binding.word03Trend.text = numbers.substringBefore("\n")
+
+                    binding.word04.text = baton["fourth"]
+                    numbers = numbers.substringAfter("\n")
+                    binding.word04Trend.text = numbers.substringBefore("\n")
+
+                    binding.word05.text = baton["fifth"]
+                    binding.word05Trend.text = numbers.substringAfter("\n")
+
                 } else {
                     Log.d(ContentValues.TAG, "The document doesn't exist.")
                 }
