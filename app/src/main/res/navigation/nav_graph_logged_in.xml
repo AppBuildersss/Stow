@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/LoggedInFirstFragment">
+
+    <fragment
+        android:id="@+id/LoggedInFirstFragment"
+        android:name="com.example.stow.LoggedInFirstFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/logged_in_fragment_first">
+
+        <action
+            android:id="@+id/action_LoggedInFirstFragment_to_LoggedInSecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/LoggedInSecondFragment"
+        android:name="com.example.stow.LoggedInSecondFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/logged_in_fragment_second">
+
+        <action
+            android:id="@+id/action_LoggedInSecondFragment_to_LoggedInFirstFragment"
+            app:destination="@id/LoggedInFirstFragment" />
+    </fragment>
+</navigation>
