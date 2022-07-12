@@ -61,11 +61,11 @@ class FirstFragment : Fragment() {
                     val intent = Intent(context, LoggedInMainActivity::class.java)
                     startActivity(intent)
                 } else {
-                    Toast.makeText(context, "Invalid Email/Password", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Invalid Email/Password", Toast.LENGTH_SHORT).show()
                 }
             }
         } else {
-            Toast.makeText(context, "Empty Fields Are not Allowed !!", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
         }
     }
 }
