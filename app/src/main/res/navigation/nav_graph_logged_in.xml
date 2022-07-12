@@ -13,7 +13,7 @@
 
         <action
             android:id="@+id/action_LoggedInFirstFragment_to_LoggedInSecondFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/LoggedInSecondFragment" />
     </fragment>
     <fragment
         android:id="@+id/LoggedInSecondFragment"

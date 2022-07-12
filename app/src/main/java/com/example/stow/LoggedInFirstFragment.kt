@@ -33,8 +33,8 @@ class LoggedInFirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonRegister.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        binding.fab.setOnClickListener {
+            findNavController().navigate(R.id.action_LoggedInFirstFragment_to_LoggedInSecondFragment)
         }
     }
 
