@@ -16,6 +16,7 @@
     <string name="Login">Login</string>
     <string name="Register"><u>Register</u></string>
     <string name="Sign_Up">Sign Up</string>
+    <string name="Sign_Out">Sign Out</string>
     <string name="Confirm">Confirm</string>
     <string name="Cursor">cursor</string>
     <string name="Word_Weight">7</string>
