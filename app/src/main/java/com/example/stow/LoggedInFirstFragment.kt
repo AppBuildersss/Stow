@@ -49,11 +49,56 @@ class LoggedInFirstFragment : Fragment() {
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.action_LoggedInFirstFragment_to_LoggedInSecondFragment)
         }
+
+        binding.imageButtonBottomRight.setOnClickListener {
+            bottomRightClicked()
+        }
+
+        binding.imageButtonBottomLeft.setOnClickListener {
+            bottomLeftClicked()
+        }
+
+        binding.imageButtonTopLeft.setOnClickListener {
+            topLeftClicked()
+        }
+
+        binding.imageButtonTopRight.setOnClickListener {
+            topRightClicked()
+        }
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun bottomRightClicked() {
+        binding.imageButtonBottomRight.setImageResource(R.drawable.ic_launcher_background)
+        binding.imageButtonBottomLeft.setImageResource(R.drawable.ic_launcher_background_unclicked)
+        binding.imageButtonTopRight.setImageResource(R.drawable.ic_launcher_background_unclicked)
+        binding.imageButtonTopLeft.setImageResource(R.drawable.ic_launcher_background_unclicked)
+    }
+
+    private fun bottomLeftClicked() {
+        binding.imageButtonBottomRight.setImageResource(R.drawable.ic_launcher_background_unclicked)
+        binding.imageButtonBottomLeft.setImageResource(R.drawable.ic_launcher_background)
+        binding.imageButtonTopRight.setImageResource(R.drawable.ic_launcher_background_unclicked)
+        binding.imageButtonTopLeft.setImageResource(R.drawable.ic_launcher_background_unclicked)
+    }
+
+    private fun topRightClicked() {
+        binding.imageButtonBottomRight.setImageResource(R.drawable.ic_launcher_background_unclicked)
+        binding.imageButtonBottomLeft.setImageResource(R.drawable.ic_launcher_background_unclicked)
+        binding.imageButtonTopRight.setImageResource(R.drawable.ic_launcher_background)
+        binding.imageButtonTopLeft.setImageResource(R.drawable.ic_launcher_background_unclicked)
+    }
+
+    private fun topLeftClicked() {
+        binding.imageButtonBottomRight.setImageResource(R.drawable.ic_launcher_background_unclicked)
+        binding.imageButtonBottomLeft.setImageResource(R.drawable.ic_launcher_background_unclicked)
+        binding.imageButtonTopRight.setImageResource(R.drawable.ic_launcher_background_unclicked)
+        binding.imageButtonTopLeft.setImageResource(R.drawable.ic_launcher_background)
     }
 
     private fun displayWords() {
