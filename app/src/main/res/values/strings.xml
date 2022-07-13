@@ -17,5 +17,9 @@
     <string name="Register"><u>Register</u></string>
     <string name="Sign_Up">Sign Up</string>
     <string name="Confirm">Confirm</string>
+    <string name="Cursor">cursor</string>
+    <string name="Word_Weight">7</string>
+    <string name="Trend_Weight">3</string>
+
 
 </resources>

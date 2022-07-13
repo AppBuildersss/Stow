@@ -66,12 +66,6 @@ class LoggedInSecondFragment : Fragment() {
                     binding.editText3.setText(document.getString("third").toString())
                     binding.editText4.setText(document.getString("fourth").toString())
                     binding.editText5.setText(document.getString("fifth").toString())
-                } else {
-                    Log.d(ContentValues.TAG, "The document doesn't exist.")
-                }
-            } else {
-                task.exception?.message?.let {
-                    Log.d(ContentValues.TAG, it)
                 }
             }
         }
