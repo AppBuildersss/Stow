@@ -1,5 +1,6 @@
 package com.example.stow
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -32,6 +33,12 @@ class LoggedInFirstFragment : Fragment() {
         // Entry point to access Firebase Database
         firebaseAuth = FirebaseAuth.getInstance()
 
+        // Go back to login page if user has logged out
+        if (firebaseAuth.currentUser == null) {
+            val intent = Intent(context, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         // Initialise python support
         initPython()
 
@@ -42,6 +49,8 @@ class LoggedInFirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        bottomRightClicked()
 
         // Display keyword tracker texts
         displayWords()
