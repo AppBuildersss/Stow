@@ -177,11 +177,6 @@ class LoggedInFirstFragment : Fragment() {
                         "fourth" to (document.getString("fourth").toString()),
                         "fifth" to (document.getString("fifth").toString())
                     )
-                    binding.editText1.text = baton["first"]
-                    binding.editText2.text = baton["second"]
-                    binding.editText3.text = baton["third"]
-                    binding.editText4.text = baton["fourth"]
-                    binding.editText5.text = baton["fifth"]
 
                     showPythonResult(baton)
                 }
@@ -211,17 +206,28 @@ class LoggedInFirstFragment : Fragment() {
     private fun showPythonResult(baton: HashMap<String, String>) {
         var trendDump = runPythonScript(baton)
 
+        binding.editText1.text = trendDump.substringBefore("\n")
+        trendDump = trendDump.substringAfter("\n")
         binding.trend1.text = trendDump.substringBefore("\n")
 
+        trendDump = trendDump.substringAfter("\n")
+        binding.editText2.text = trendDump.substringBefore("\n")
         trendDump = trendDump.substringAfter("\n")
         binding.trend2.text = trendDump.substringBefore("\n")
 
         trendDump = trendDump.substringAfter("\n")
+        binding.editText3.text = trendDump.substringBefore("\n")
+        trendDump = trendDump.substringAfter("\n")
         binding.trend3.text = trendDump.substringBefore("\n")
 
         trendDump = trendDump.substringAfter("\n")
+        binding.editText4.text = trendDump.substringBefore("\n")
+        trendDump = trendDump.substringAfter("\n")
         binding.trend4.text = trendDump.substringBefore("\n")
 
+        trendDump = trendDump.substringAfter("\n")
+        binding.editText5.text = trendDump.substringBefore("\n")
         binding.trend5.text = trendDump.substringAfter("\n")
+
     }
 }

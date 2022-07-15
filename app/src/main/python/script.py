@@ -25,7 +25,8 @@ def getResult(word_01, word_02, word_03, word_04, word_05):
         keywords.append(kw)
         #s = s + kw + " " + check()
         #s = s + check() + " " + kw + "\n"
-        s = s + check() + "\n"
+        #s = s + check() + "\n"
+        s = s + kw + "\n" + check() + "\n"
         keywords.pop()
 
     return s
