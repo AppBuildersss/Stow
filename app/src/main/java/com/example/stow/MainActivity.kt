@@ -9,6 +9,8 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import androidx.navigation.fragment.findNavController
 import com.example.stow.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 

@@ -60,6 +60,7 @@ class FirstFragment : Fragment() {
                 if (it.isSuccessful) {
                     val intent = Intent(context, LoggedInMainActivity::class.java)
                     startActivity(intent)
+                    Runtime.getRuntime().exit(0)
                 } else {
                     Toast.makeText(context, "Invalid Email/Password", Toast.LENGTH_SHORT).show()
                 }
