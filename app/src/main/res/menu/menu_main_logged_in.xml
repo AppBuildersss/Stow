@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.stow.LoggedInMainActivity">
     <item
-        android:id="@+id/action_sign_out"
-        android:orderInCategory="100"
-        android:title="@string/Sign_Out"
-        app:showAsAction="never" />
-    <item
         android:id="@+id/action_about"
         android:orderInCategory="100"
         android:title="@string/About"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_sign_out"
+        android:orderInCategory="100"
+        android:title="@string/Sign_Out"
         app:showAsAction="never" />
 </menu>

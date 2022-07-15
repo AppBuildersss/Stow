@@ -60,6 +60,10 @@ class LoggedInFirstFragment : Fragment() {
         val mediaPlayer2 = MediaPlayer.create(context, R.raw.motivate)
         val mediaPlayer3 = MediaPlayer.create(context, R.raw.passion)
 
+        mediaPlayer1.isLooping = true;
+        mediaPlayer2.isLooping = true;
+        mediaPlayer3.isLooping = true;
+
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.action_LoggedInFirstFragment_to_LoggedInSecondFragment)
         }
