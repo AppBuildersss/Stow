@@ -19,8 +19,12 @@
     <string name="Sign_Out">Sign Out</string>
     <string name="Confirm">Confirm</string>
     <string name="Cursor">cursor</string>
-    <string name="Word_Weight">7</string>
-    <string name="Trend_Weight">3</string>
+    <string name="About">About</string>
 
-
+    <string name="Music_Line1"><u>Music Used</u></string>
+    <string name="Music_Line2">Background by 2TECH-AUDIO</string>
+    <string name="Music_Line3">Motivate by 2TECH-AUDIO</string>
+    <string name="Music_Line4">Passion by 2TECH-AUDIO</string>
+    <string name="Music_Line5">https://2tech-audio.bandcamp.com</string>
+    <string name="Music_Line6">Music promoted by https://www.free-stock-music.com</string>
 </resources>

@@ -55,6 +55,13 @@ class LoggedInMainActivity : AppCompatActivity() {
 
                 true
             }
+            R.id.action_about -> {
+                //go to AboutActivity
+                val intent = Intent(this, AboutActivity::class.java)
+                startActivity(intent)
+
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
