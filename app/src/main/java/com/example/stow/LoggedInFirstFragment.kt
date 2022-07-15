@@ -137,31 +137,31 @@ class LoggedInFirstFragment : Fragment() {
     }
 
     private fun bottomRightClicked() {
-        binding.imageButtonBottomRight.setImageResource(R.drawable.ic_launcher_background)
-        binding.imageButtonBottomLeft.setImageResource(R.drawable.ic_launcher_background_unclicked)
-        binding.imageButtonTopRight.setImageResource(R.drawable.ic_launcher_background_unclicked)
-        binding.imageButtonTopLeft.setImageResource(R.drawable.ic_launcher_background_unclicked)
+        binding.imageButtonBottomRight.setImageResource(R.drawable.disc_mute)
+        binding.imageButtonBottomLeft.setImageResource(R.drawable.disc_unselected)
+        binding.imageButtonTopRight.setImageResource(R.drawable.disc_unselected)
+        binding.imageButtonTopLeft.setImageResource(R.drawable.disc_unselected)
     }
 
     private fun bottomLeftClicked() {
-        binding.imageButtonBottomRight.setImageResource(R.drawable.ic_launcher_background_unclicked)
-        binding.imageButtonBottomLeft.setImageResource(R.drawable.ic_launcher_background)
-        binding.imageButtonTopRight.setImageResource(R.drawable.ic_launcher_background_unclicked)
-        binding.imageButtonTopLeft.setImageResource(R.drawable.ic_launcher_background_unclicked)
+        binding.imageButtonBottomRight.setImageResource(R.drawable.disc_mute_unclick)
+        binding.imageButtonBottomLeft.setImageResource(R.drawable.disc_yellow)
+        binding.imageButtonTopRight.setImageResource(R.drawable.disc_unselected)
+        binding.imageButtonTopLeft.setImageResource(R.drawable.disc_unselected)
     }
 
     private fun topRightClicked() {
-        binding.imageButtonBottomRight.setImageResource(R.drawable.ic_launcher_background_unclicked)
-        binding.imageButtonBottomLeft.setImageResource(R.drawable.ic_launcher_background_unclicked)
-        binding.imageButtonTopRight.setImageResource(R.drawable.ic_launcher_background)
-        binding.imageButtonTopLeft.setImageResource(R.drawable.ic_launcher_background_unclicked)
+        binding.imageButtonBottomRight.setImageResource(R.drawable.disc_mute_unclick)
+        binding.imageButtonBottomLeft.setImageResource(R.drawable.disc_unselected)
+        binding.imageButtonTopRight.setImageResource(R.drawable.disc_red)
+        binding.imageButtonTopLeft.setImageResource(R.drawable.disc_unselected)
     }
 
     private fun topLeftClicked() {
-        binding.imageButtonBottomRight.setImageResource(R.drawable.ic_launcher_background_unclicked)
-        binding.imageButtonBottomLeft.setImageResource(R.drawable.ic_launcher_background_unclicked)
-        binding.imageButtonTopRight.setImageResource(R.drawable.ic_launcher_background_unclicked)
-        binding.imageButtonTopLeft.setImageResource(R.drawable.ic_launcher_background)
+        binding.imageButtonBottomRight.setImageResource(R.drawable.disc_mute_unclick)
+        binding.imageButtonBottomLeft.setImageResource(R.drawable.disc_unselected)
+        binding.imageButtonTopRight.setImageResource(R.drawable.disc_unselected)
+        binding.imageButtonTopLeft.setImageResource(R.drawable.disc_blue)
     }
 
     private fun displayWords() {

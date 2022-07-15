@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.stow.databinding.FragmentFirstBinding
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.delay
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
