@@ -1,6 +1,7 @@
 package com.example.stow
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -55,24 +56,72 @@ class LoggedInFirstFragment : Fragment() {
         // Display keyword tracker texts
         displayWords()
 
+        val mediaPlayer1 = MediaPlayer.create(context, R.raw.background)
+        val mediaPlayer2 = MediaPlayer.create(context, R.raw.motivate)
+        val mediaPlayer3 = MediaPlayer.create(context, R.raw.passion)
+
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.action_LoggedInFirstFragment_to_LoggedInSecondFragment)
         }
 
         binding.imageButtonBottomRight.setOnClickListener {
             bottomRightClicked()
+            if (mediaPlayer1.isPlaying) {
+                mediaPlayer1.pause();
+            }
+
+            if (mediaPlayer2.isPlaying) {
+                mediaPlayer2.pause();
+            }
+
+            if (mediaPlayer3.isPlaying) {
+                mediaPlayer3.pause()
+            }
         }
 
         binding.imageButtonBottomLeft.setOnClickListener {
             bottomLeftClicked()
+            if (mediaPlayer3.isPlaying) {
+                mediaPlayer3.pause();
+            }
+
+            if (mediaPlayer2.isPlaying) {
+                mediaPlayer2.pause();
+            }
+
+            if (!mediaPlayer1.isPlaying) {
+                mediaPlayer1.start()
+            }
         }
 
         binding.imageButtonTopLeft.setOnClickListener {
             topLeftClicked()
+            if (mediaPlayer1.isPlaying) {
+                mediaPlayer1.pause();
+            }
+
+            if (mediaPlayer3.isPlaying) {
+                mediaPlayer3.pause();
+            }
+
+            if (!mediaPlayer2.isPlaying) {
+                mediaPlayer2.start()
+            }
         }
 
         binding.imageButtonTopRight.setOnClickListener {
             topRightClicked()
+            if (mediaPlayer1.isPlaying) {
+                mediaPlayer1.pause();
+            }
+
+            if (mediaPlayer2.isPlaying) {
+                mediaPlayer2.pause();
+            }
+
+            if (!mediaPlayer3.isPlaying) {
+                mediaPlayer3.start()
+            }
         }
 
     }
