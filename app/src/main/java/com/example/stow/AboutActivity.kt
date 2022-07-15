@@ -19,8 +19,14 @@ class AboutActivity : AppCompatActivity() {
 
         // Go back to login page if user has logged out
         if (firebaseAuth.currentUser == null) {
+            //val intent = Intent(this, MainActivity::class.java)
+            //startActivity(intent)
+
             val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            this.startActivity(intent)
+            this.finish()
+            Runtime.getRuntime().exit(0)
         }
 
         binding = ActivityAboutBinding.inflate(layoutInflater)

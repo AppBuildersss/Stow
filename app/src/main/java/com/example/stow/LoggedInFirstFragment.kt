@@ -34,12 +34,6 @@ class LoggedInFirstFragment : Fragment() {
         // Entry point to access Firebase Database
         firebaseAuth = FirebaseAuth.getInstance()
 
-        // Go back to login page if user has logged out
-        if (firebaseAuth.currentUser == null) {
-            val intent = Intent(context, MainActivity::class.java)
-            startActivity(intent)
-        }
-
         // Initialise python support
         initPython()
 
