@@ -14,10 +14,8 @@ import com.example.stow.databinding.LoggedInFragmentFirstBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import android.app.SearchManager
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class LoggedInFirstFragment : Fragment() {
 
     private var _binding: LoggedInFragmentFirstBinding? = null
@@ -61,22 +59,62 @@ class LoggedInFirstFragment : Fragment() {
         val mediaPlayer2 = MediaPlayer.create(context, R.raw.motivate)
         val mediaPlayer3 = MediaPlayer.create(context, R.raw.passion)
 
-        mediaPlayer1.isLooping = true;
-        mediaPlayer2.isLooping = true;
-        mediaPlayer3.isLooping = true;
+        mediaPlayer1.isLooping = true
+        mediaPlayer2.isLooping = true
+        mediaPlayer3.isLooping = true
 
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.action_LoggedInFirstFragment_to_LoggedInSecondFragment)
         }
 
+        binding.editText1.setOnClickListener {
+            if (binding.editText1.text != "") {
+                val intent = Intent(Intent.ACTION_WEB_SEARCH)
+                intent.putExtra(SearchManager.QUERY, binding.editText1.text)
+                startActivity(intent)
+            }
+        }
+
+        binding.editText2.setOnClickListener {
+            if (binding.editText2.text != "") {
+                val intent = Intent(Intent.ACTION_WEB_SEARCH)
+                intent.putExtra(SearchManager.QUERY, binding.editText2.text)
+                startActivity(intent)
+            }
+        }
+
+        binding.editText3.setOnClickListener {
+            if (binding.editText3.text != "") {
+                val intent = Intent(Intent.ACTION_WEB_SEARCH)
+                intent.putExtra(SearchManager.QUERY, binding.editText3.text)
+                startActivity(intent)
+            }
+        }
+
+        binding.editText4.setOnClickListener {
+            if (binding.editText4.text != "") {
+                val intent = Intent(Intent.ACTION_WEB_SEARCH)
+                intent.putExtra(SearchManager.QUERY, binding.editText4.text)
+                startActivity(intent)
+            }
+        }
+
+        binding.editText5.setOnClickListener {
+            if (binding.editText5.text != "") {
+                val intent = Intent(Intent.ACTION_WEB_SEARCH)
+                intent.putExtra(SearchManager.QUERY, binding.editText5.text)
+                startActivity(intent)
+            }
+        }
+
         binding.imageButtonBottomRight.setOnClickListener {
             bottomRightClicked()
             if (mediaPlayer1.isPlaying) {
-                mediaPlayer1.pause();
+                mediaPlayer1.pause()
             }
 
             if (mediaPlayer2.isPlaying) {
-                mediaPlayer2.pause();
+                mediaPlayer2.pause()
             }
 
             if (mediaPlayer3.isPlaying) {
@@ -87,11 +125,11 @@ class LoggedInFirstFragment : Fragment() {
         binding.imageButtonBottomLeft.setOnClickListener {
             bottomLeftClicked()
             if (mediaPlayer3.isPlaying) {
-                mediaPlayer3.pause();
+                mediaPlayer3.pause()
             }
 
             if (mediaPlayer2.isPlaying) {
-                mediaPlayer2.pause();
+                mediaPlayer2.pause()
             }
 
             if (!mediaPlayer1.isPlaying) {
@@ -102,11 +140,11 @@ class LoggedInFirstFragment : Fragment() {
         binding.imageButtonTopLeft.setOnClickListener {
             topLeftClicked()
             if (mediaPlayer1.isPlaying) {
-                mediaPlayer1.pause();
+                mediaPlayer1.pause()
             }
 
             if (mediaPlayer3.isPlaying) {
-                mediaPlayer3.pause();
+                mediaPlayer3.pause()
             }
 
             if (!mediaPlayer2.isPlaying) {
@@ -117,11 +155,11 @@ class LoggedInFirstFragment : Fragment() {
         binding.imageButtonTopRight.setOnClickListener {
             topRightClicked()
             if (mediaPlayer1.isPlaying) {
-                mediaPlayer1.pause();
+                mediaPlayer1.pause()
             }
 
             if (mediaPlayer2.isPlaying) {
-                mediaPlayer2.pause();
+                mediaPlayer2.pause()
             }
 
             if (!mediaPlayer3.isPlaying) {
@@ -177,7 +215,6 @@ class LoggedInFirstFragment : Fragment() {
                         "fourth" to (document.getString("fourth").toString()),
                         "fifth" to (document.getString("fifth").toString())
                     )
-
                     showPythonResult(baton)
                 }
             }

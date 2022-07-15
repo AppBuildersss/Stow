@@ -12,9 +12,6 @@ import com.example.stow.databinding.FragmentFirstBinding
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
