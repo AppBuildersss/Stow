@@ -64,6 +64,19 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/editText5"
+        app:layout_constraintEnd_toEndOf="@+id/trend3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cursor"
+        android:indeterminate="true"
+        />
+
     <TextView
         android:id="@+id/editText1"
         android:layout_width="0dp"
@@ -73,17 +86,20 @@
         android:maxLines="1"
         android:clickable="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/editText2"
         app:layout_constraintHorizontal_weight="7"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/trend1"
-        app:layout_constraintTop_toTopOf="@+id/cursor" />
+        app:layout_constraintTop_toTopOf="@+id/cursor"
+        android:focusable="true" />
 
     <TextView
         android:id="@+id/trend1"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/trend2"
         app:layout_constraintHorizontal_weight="3"
         app:layout_constraintLeft_toRightOf="@+id/editText1"
@@ -98,18 +114,21 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:clickable="true"
+        android:visibility="invisible"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/editText3"
         app:layout_constraintHorizontal_weight="7"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/trend2"
-        app:layout_constraintTop_toBottomOf="@+id/editText1" />
+        app:layout_constraintTop_toBottomOf="@+id/editText1"
+        android:focusable="true" />
 
     <TextView
         android:id="@+id/trend2"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/trend3"
         app:layout_constraintTop_toBottomOf="@+id/trend1"
         app:layout_constraintHorizontal_weight="3"
@@ -124,18 +143,21 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:clickable="true"
+        android:visibility="invisible"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/editText4"
         app:layout_constraintHorizontal_weight="7"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/trend3"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        android:focusable="true" />
 
     <TextView
         android:id="@+id/trend3"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/trend4"
         app:layout_constraintHorizontal_weight="3"
         app:layout_constraintLeft_toRightOf="@+id/editText3"
@@ -150,17 +172,20 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:clickable="true"
+        android:visibility="invisible"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/editText5"
         app:layout_constraintHorizontal_weight="7"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/trend4"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        android:focusable="true" />
 
     <TextView
         android:id="@+id/trend4"
         android:layout_width="0dp"
         android:layout_height="48dp"
+        android:visibility="invisible"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/trend5"
         app:layout_constraintTop_toBottomOf="@+id/trend3"
@@ -176,16 +201,19 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:clickable="true"
+        android:visibility="invisible"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintHorizontal_weight="7"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/trend5"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/editText4"
+        android:focusable="true" />
 
     <TextView
         android:id="@+id/trend5"
         android:layout_width="0dp"
         android:layout_height="48dp"
+        android:visibility="invisible"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintHorizontal_weight="3"
         app:layout_constraintLeft_toRightOf="@+id/editText5"
@@ -198,6 +226,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:contentDescription="@string/Add"
+        app:backgroundTint="#FFC107"
+        app:tint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.954"
@@ -212,7 +242,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:contentDescription="@string/Refresh"
-        app:backgroundTint="#E91E63"
+        app:backgroundTint="#D61658"
         app:tint="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/fab"
         app:layout_constraintEnd_toEndOf="parent"

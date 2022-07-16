@@ -67,6 +67,24 @@ class LoggedInFirstFragment : Fragment() {
             findNavController().navigate(R.id.action_LoggedInFirstFragment_to_LoggedInSecondFragment)
         }
 
+        binding.fabRefresh.setOnClickListener {
+            binding.editText1.visibility = View.INVISIBLE
+            binding.editText2.visibility = View.INVISIBLE
+            binding.editText3.visibility = View.INVISIBLE
+            binding.editText4.visibility = View.INVISIBLE
+            binding.editText5.visibility = View.INVISIBLE
+
+            binding.trend1.visibility = View.INVISIBLE
+            binding.trend2.visibility = View.INVISIBLE
+            binding.trend3.visibility = View.INVISIBLE
+            binding.trend4.visibility = View.INVISIBLE
+            binding.trend5.visibility = View.INVISIBLE
+
+            binding.progressBar.visibility = View.VISIBLE
+
+            displayWords()
+        }
+
         binding.editText1.setOnClickListener {
             if (binding.editText1.text != "") {
                 val intent = Intent(Intent.ACTION_WEB_SEARCH)
@@ -266,5 +284,18 @@ class LoggedInFirstFragment : Fragment() {
         binding.editText5.text = trendDump.substringBefore("\n")
         binding.trend5.text = trendDump.substringAfter("\n")
 
+        binding.progressBar.visibility = View.INVISIBLE
+
+        binding.editText1.visibility = View.VISIBLE
+        binding.editText2.visibility = View.VISIBLE
+        binding.editText3.visibility = View.VISIBLE
+        binding.editText4.visibility = View.VISIBLE
+        binding.editText5.visibility = View.VISIBLE
+
+        binding.trend1.visibility = View.VISIBLE
+        binding.trend2.visibility = View.VISIBLE
+        binding.trend3.visibility = View.VISIBLE
+        binding.trend4.visibility = View.VISIBLE
+        binding.trend5.visibility = View.VISIBLE
     }
 }
