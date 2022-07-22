@@ -73,14 +73,16 @@ class SecondFragment : Fragment() {
                             .set(user)
 
                         // Go back to First Fragment
+                        Toast.makeText(context, "Sign Up Successful", Toast.LENGTH_SHORT).show()
                         firebaseAuth.signOut()
                         findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
                     }
                     password != confirmPassword -> {
-                        Toast.makeText(context, "password do not match", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Password do not match", Toast.LENGTH_SHORT).show()
                     }
                     else -> {
-                        Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, it.exception.toString().
+                        substringAfter(": "), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
